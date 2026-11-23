@@ -44,3 +44,25 @@ docker builder prune
 
 # Remove everything unused:
 docker system prune -a
+
+#First time:
+docker build -t mva-robotics .
+
+docker run -it \
+  --name mva-container \
+  -v "$(pwd):/app" \
+  mva-robotics bash
+
+
+#Next day (reuse your existing container):
+docker start -ai mva-container
+
+
+#When you change the Dockerfile:
+docker rm -f mva-container
+docker build -t mva-robotics .
+
+docker run -it \
+  --name mva-container \
+  -v "$(pwd):/app" \
+  mva-robotics bash
