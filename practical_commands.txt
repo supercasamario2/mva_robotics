@@ -1,0 +1,46 @@
+#Build the image:
+docker build -t mva-robotics .docker build -t mva-robotics .
+
+#Run it interactively with a Bash terminal
+docker run -it --name mva-container mva-robotics bash
+
+#leave the container 
+exit
+
+# Stop existing container
+docker stop mva-container
+
+# Remove existing container
+docker rm mva-container
+
+# Rebuild image
+docker build -t mva-robotics .
+
+# Create new container
+docker run -it --name mva-container mva-robotics bash
+
+#bind mount:
+docker run -it \
+  --name mva-container \
+  -v "$(pwd):/app" \
+  -w /app \
+  mva-robotics bash
+
+# Remove stopped containers
+docker container prune
+
+# Remove unused images
+docker image prune -a
+
+# Remove unused build cache
+docker builder prune# Remove stopped containers
+docker container prune
+
+# Remove unused images
+docker image prune -a
+
+# Remove unused build cache
+docker builder prune
+
+# Remove everything unused:
+docker system prune -a
