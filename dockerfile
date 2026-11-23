@@ -23,8 +23,8 @@ RUN git clone --depth 1 \
     && rm -rf /tmp/eigen# Install Python dependencies
 
 # COPY requirements.txt .
-# RUN pip install --no-cache-dir -r requirements.txt
-
 COPY . .
 
-CMD ["python", "main.py"]
+RUN pip install --no-cache-dir -r requirements.txt
+
+# CMD ["python", "main.py"]
