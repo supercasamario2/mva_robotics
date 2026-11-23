@@ -17,15 +17,11 @@ ARG EIGEN_VERSION=5.0.1
 RUN git clone --depth 1 \
     --branch ${EIGEN_VERSION} \
     https://gitlab.com/libeigen/eigen.git /tmp/eigen \
-    && cmake -S /tmp/eigen -B /tmp/eigen-build \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/usr/local \
-        -DEIGEN_BUILD_TESTING=OFF \
-        -DEIGEN_BUILD_DOC=OFF \
-    && cmake --install /tmp/eigen-build \
-    && rm -rf /tmp/eigen /tmp/eigen-build
+    && mkdir -p /usr/local/include/eigen3 \
+    && cp -r /tmp/eigen/Eigen /usr/local/include/eigen3/ \
+    && cp -r /tmp/eigen/unsupported /usr/local/include/eigen3/ \
+    && rm -rf /tmp/eigen# Install Python dependencies
 
-# Install Python dependencies
 # COPY requirements.txt .
 # RUN pip install --no-cache-dir -r requirements.txt
 
