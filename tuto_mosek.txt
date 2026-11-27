@@ -1,0 +1,11 @@
+Bon, mosek c'est payant ptdr, donc il faut
+1 - Télécharger une licence d'essai de mosek (la licence d'essai est valable 30j):
+https://www.mosek.com/sales/license-activation/ 
+
+2 - copier le fichier .lic de l'ordi vers le docker (mettre le bon port (le bon numero en gros)):
+docker cp /chemin/vers/mosek.lic d906041f8645:/home/ubuntu/mosek/mosek.lic 
+
+3 - créer la variable d'environnement : 
+export MOSEKLM_LICENSE_FILE=/home/ubuntu/mosek/mosek.lic
+
+4 - normalement ça marche !
