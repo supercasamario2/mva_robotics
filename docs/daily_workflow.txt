@@ -1,0 +1,11 @@
+# Enter Docker (if using compose)
+docker compose run --rm robotics
+
+# Configure
+cmake -S . -B build
+
+# Compile
+cmake --build build -j
+
+# Execute Python
+PYTHONPATH=build python python/main.py
