@@ -21,6 +21,7 @@ pybind11_add_module(mva_robotics
 
 add_executable(mva_test
     test/test.cpp
+    test/test_mathis.cpp
 )
 
 target_include_directories(mva_robotics PUBLIC include)
