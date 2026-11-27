@@ -1,0 +1,11 @@
+services:
+  robotics:
+    build: .
+    image: mva-robotics
+    working_dir: /app
+    volumes:
+      - .:/app
+    user: "${UID:-1000}:${GID:-1000}"
+    stdin_open: true
+    tty: true
+    command: bash
