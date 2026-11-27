@@ -19,9 +19,21 @@ pybind11_add_module(mva_robotics
     src/bindings.cpp
 )
 
+add_executable(mva_test
+    test/test.cpp
+)
+
 target_include_directories(mva_robotics PUBLIC include)
 
 target_link_libraries(mva_robotics PUBLIC
+    Eigen3::Eigen
+    drake::drake
+    pinocchio::pinocchio
+)
+
+target_include_directories(mva_test PRIVATE include)
+
+target_link_libraries(mva_test PRIVATE
     Eigen3::Eigen
     drake::drake
     pinocchio::pinocchio
