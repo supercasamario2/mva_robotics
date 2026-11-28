@@ -17,6 +17,7 @@ find_package(pinocchio CONFIG REQUIRED)
 # Python module
 pybind11_add_module(mva_robotics
     src/bindings.cpp
+    src/base.cpp
 )
 
 add_executable(mva_test
@@ -24,8 +25,10 @@ add_executable(mva_test
     test/test_mathis.cpp
 )
 
-target_include_directories(mva_robotics PUBLIC include)
-
+#target_include_directories(mva_robotics PUBLIC include)
+target_include_directories(mva_robotics PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
+)
 target_link_libraries(mva_robotics PUBLIC
     Eigen3::Eigen
     drake::drake
